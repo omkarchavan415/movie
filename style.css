@@ -1,0 +1,230 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #E50914; /* Netflix Red */
+    --dark-color: #141414;    /* Netflix Dark */
+    --light-color: #FFFFFF;
+    --gray-color: #808080;
+    --container-width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    line-height: 1.6;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    width: 100%;
+    height: 68px;
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Horizontally centers the content inside */
+    align-items: center;     /* Vertically centers the content inside */
+    padding: 0 50px;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: var(--container-width);
+    display: flex;
+    justify-content: space-between; /* Pushes logo left and menu right */
+    align-items: center;
+}
+
+.navbar-logo {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+}
+
+/* --- Hero Section (for Home Page) --- */
+.hero-section {
+    height: 85vh;
+    background: url('https://image.tmdb.org/t/p/original/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background-image: linear-gradient(180deg, transparent, rgba(20, 20, 20, 0.6), var(--dark-color));
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Page Header (for other pages) --- */
+.page-header {
+    background-color: #222;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+/* --- General Content Styling --- */
+main {
+    padding: 2rem 50px;
+}
+
+.content-container {
+    max-width: var(--container-width);
+    margin: 0 auto; /* Centers the container */
+}
+
+/* --- Movie Grid --- */
+.movie-category h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.movie-card {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the card without distortion */
+    display: block;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    z-index: 20;
+}
+
+/* --- About & Contact Page Specifics --- */
+.text-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: var(--light-color);
+    font-size: 1rem;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+/* --- Footer --- */
+.site-footer {
+    border-top: 1px solid #333;
+    padding: 2rem 50px;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--gray-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar, main, .site-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .nav-menu {
+        display: none; /* Hides menu on small screens; JS needed for a hamburger menu */
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+}
